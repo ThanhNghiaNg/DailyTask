@@ -35,7 +35,13 @@ const taskReducer = (state, action) => {
   }
   // Keep
   if (action.type === "UPDATE") {
-    return { ...state };
+    const updatedTasks = [...state.tasks];
+    const idx = updatedTasks.findIndex(
+      (task) => Number(task.id) === Number(action.id)
+    );
+    updatedTasks[idx].name = action.info.name;
+    updatedTasks[idx].completeDate = action.info.done ? new Date() : null;
+    return { tasks: updatedTasks, autoId: state.autoId };
   }
   //
   if (action.type === "DONE") {
@@ -43,12 +49,12 @@ const taskReducer = (state, action) => {
     const idx = updatedTasks.findIndex(
       (task) => Number(task.id) === Number(action.id)
     );
-    
+
     updatedTasks[idx].completeDate =
       updatedTasks[idx].completeDate === null
         ? new Date()
         : updatedTasks[idx].completeDate;
-    
+
     localStorage.setItem("TASKS", JSON.stringify(updatedTasks));
     return { tasks: updatedTasks, autoId: state.autoId };
   }

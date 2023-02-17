@@ -1,4 +1,10 @@
-.list{
-    width: 30rem;
-    margin: 0 auto
+.list {
+  width: 30rem;
+  margin: 0 auto;
+  max-height: 37rem;
+  overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
