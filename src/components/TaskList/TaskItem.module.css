@@ -1,0 +1,10 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.done {
+  background-color: green;
+  color: #fff;
+  transition: background-color 1s ease;
+}
